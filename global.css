@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --body-bg: #deedbd;
+  --body-bg-dm: #383937;
+  --header-footer-bg: #006400;
+  --profile-text: var(--header-footer-bg);
+  --profile-switch: var(--header-footer-bg);
+  --head-foot-bg-dm: #2b2929;
+  --light-text: #d9d9d9;
+  --card-shadow-border: #043704;
+  --tags: #efef66;
+  --button-bg: #92ec92;
+}
+
+body {
+  background-color: var(--body-bg);
+  overflow-x: hidden;
+}
+
+/* Dark Mode */
+body:has(#switch:checked) {
+  --body-bg: var(--body-bg-dm);
+  --header-footer-bg: var(--head-foot-bg-dm);
+  --profile-text: var(--light-text);
+  --profile-switch: var(--body-bg);
+}
+
+main {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 110px 0;
+  gap: 30px;
+}

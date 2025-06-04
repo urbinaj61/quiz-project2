@@ -1,0 +1,137 @@
+.profile {
+  width: 100%;
+  display: flex;
+}
+
+.profile__image_container {
+  margin: 20px 0 20px 40px;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+}
+
+.profile__name_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile__name {
+  font-size: 3rem;
+  color: var(--profile-text);
+}
+
+.about-me {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-me__title {
+  padding: 10px 0 10px 80px;
+  font-size: 1.6rem;
+  color: var(--profile-text);
+}
+
+.about-me__summary {
+  padding: 10px 50px 10px 80px;
+  font-size: 1.4rem;
+  color: var(--profile-text);
+}
+
+.tags {
+  width: 100%;
+  display: flex;
+  margin: 30px 0 0 100px;
+}
+
+.tags__counter_container {
+  width: 100px;
+  height: 50px;
+  margin-left: 30px;
+  background-color: var(--header-footer-bg);
+  color: var(--light-text);
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tags__icon {
+  width: 30px;
+  height: 30px;
+}
+
+.tags__count {
+  font-size: 1.2rem;
+  padding-left: 5px;
+  color: var(--light-text);
+}
+
+.settings {
+  width: 100%;
+  margin: 40px 0 0 125px;
+}
+
+.settings__title {
+  font-size: 1.6rem;
+  color: var(--profile-text);
+}
+
+.settings__container {
+  width: 100%;
+  display: flex;
+  padding-top: 10px;
+}
+
+.settings__dark-mode-title {
+  font-size: 1.6rem;
+  color: var(--profile-text);
+}
+
+/*Styled checkbox */
+input[type='checkbox'] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+label {
+  margin-left: 100px;
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 70px;
+  height: 30px;
+  background: var(--header-footer-bg);
+  display: block;
+  border-radius: 100px;
+  position: relative;
+}
+
+label:after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 20px;
+  height: 20px;
+  background: var(--tags);
+  border-radius: 90px;
+  transition: 0.3s;
+}
+
+input:checked + label {
+  background: var(--header-footer-bg);
+}
+
+input:checked + label:after {
+  left: calc(100% - 5px);
+  transform: translateX(-100%);
+}
+
+label:active:after {
+  width: 80px;
+}
