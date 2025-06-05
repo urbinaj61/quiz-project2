@@ -9,6 +9,48 @@
   </head>
   <body>
     <header><h1>Quiz App</h1></header>
+    <main>
+      <section class="card-add">
+        <form class="card-add__form">
+          <label class="card-add__label" for="card-add__label_question"
+            >Your question</label
+          >
+          <textarea
+            autofocus
+            placeholder="Please enter your question"
+            aria-label="question-textarea"
+            name="textarea_question"
+            id="card-add__label_question"
+            class="card-add__textarea"
+            class="card-add__question"
+            maxlength="150"
+            minlength="10"
+          ></textarea>
+          <label class="card-add__label" for="card-add__label_answer"
+            >Your answer</label
+          >
+          <textarea
+            placeholder="Please enter your answer"
+            aria-label="answer-textarea"
+            name="textarea_answer"
+            id="card-add__label_answer"
+            class="card-add__textarea"
+            class="card-add__answer"
+            maxlength="150"
+            minlength="10"
+          ></textarea>
+          <label class="card-add__label" for="card-add__tags">Tags</label>
+          <input
+            placeholder="Please enter a tag"
+            aria-label="input_tags"
+            name="input_tags"
+            id="card-add__tags"
+            class="card-add__input_tags"
+            type="text"
+          /><button name="button_tags" class="card-add__button">Submit</button>
+        </form>
+      </section>
+    </main>
     <nav>
       <ul>
         <li>
@@ -73,7 +115,8 @@
         </li>
         <li>
           <a class="current" href="./cardAdd.html"
-            ><svg class="icon"
+            ><svg
+              class="icon"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -92,8 +135,5 @@
         </li>
       </ul>
     </nav>
-  </body>
-</html>
-
   </body>
 </html>
