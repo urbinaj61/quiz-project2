@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Nunito&display=swap");
 
 * {
   margin: 0;
@@ -17,6 +17,7 @@
   --card-shadow-border: #043704;
   --tags: #efef66;
   --button-bg: #92ec92;
+  --button-shadow: #676865;
 }
 
 body {
