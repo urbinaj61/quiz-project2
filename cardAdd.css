@@ -71,6 +71,7 @@
   color: var(--light-text);
   font-weight: bold;
   box-shadow: 4px 4.5px 2px 2px var(--card-shadow-border);
+  cursor: pointer;
 }
 
 .card-add__button:hover {

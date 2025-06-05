@@ -4,14 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="./assets/quiz-favicon.png" type="image/x-icon" />
+    <script src="./js/cardAdd.js" defer></script>
     <link rel="stylesheet" href="styles.css" />
     <title>Quiz App</title>
   </head>
   <body>
     <header><h1>Quiz App</h1></header>
-    <main>
+    <main data-js="main-container">
       <section class="card-add">
-        <form class="card-add__form">
+        <form class="card-add__form" data-js="card-add-form">
           <label class="card-add__label" for="card-add__label_question"
             >Your question</label
           >
@@ -47,6 +48,7 @@
             id="card-add__tags"
             class="card-add__input_tags"
             type="text"
+            maxlength="6"
           /><button name="button_tags" class="card-add__button">Submit</button>
         </form>
       </section>
