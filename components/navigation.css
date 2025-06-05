@@ -30,9 +30,10 @@ a .icon {
 }
 
 a .icon:hover {
-  fill: var(--light-text);
+  fill: var(--tags);
 }
 
 a.current .icon {
-  fill: var(--light-text);
+  stroke: var(--tags);
+  font-weight: bold;
 }
