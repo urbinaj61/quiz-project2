@@ -47,7 +47,7 @@ const createCard = cardInputs => {
             width="24"
             height="24"
             viewBox="0 0 24 24"
-            fill="#006400"
+            fill="none"
             stroke="#006400"
             stroke-width="2"
             stroke-linecap="round"
