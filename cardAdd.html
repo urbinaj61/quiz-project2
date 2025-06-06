@@ -24,12 +24,24 @@
             id="card-add__label_question"
             class="card-add__textarea"
             class="card-add__question"
+            data-js="card-add__textarea1"
             maxlength="150"
             minlength="10"
           ></textarea>
+          <aside class="card-add__counter_container">
+            <span
+              class="card-add__maxCount"
+              data-js="card-add__maxCount1"
+            ></span
+            ><span
+              class="card-add__counter"
+              data-js="card-add__counter1"
+            ></span>
+          </aside>
           <label class="card-add__label" for="card-add__label_answer"
             >Your answer</label
           >
+
           <textarea
             placeholder="Please enter your answer"
             aria-label="answer-textarea"
@@ -37,9 +49,20 @@
             id="card-add__label_answer"
             class="card-add__textarea"
             class="card-add__answer"
+            data-js="card-add__textarea2"
             maxlength="150"
             minlength="10"
           ></textarea>
+          <aside class="card-add__counter_container">
+            <span
+              class="card-add__maxCount"
+              data-js="card-add__maxCount2"
+            ></span
+            ><span
+              class="card-add__counter"
+              data-js="card-add__counter2"
+            ></span>
+          </aside>
           <label class="card-add__label" for="card-add__tags">Tags</label>
           <input
             placeholder="Please enter a tag"

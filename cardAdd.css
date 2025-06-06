@@ -23,7 +23,8 @@
 }
 
 .card-add__textarea {
-  margin: 10px 0;
+  position: relative;
+  margin: 15px 0 0 0;
   width: 350px;
   max-width: 90%;
   height: 100px;
@@ -33,6 +34,22 @@
   color: var(--light-text);
   box-shadow: 4px 4.5px 2px 2px var(--card-shadow-border);
   border: none;
+}
+
+.card-add__counter_container {
+  display: flex;
+  margin: 4px 0 0 10px;
+  justify-content: right;
+  width: 350px;
+  max-width: 90%;
+  height: 30px;
+}
+
+.card-add__counter,
+.card-add__maxCount {
+  color: var(--header-footer-bg);
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
 .card-add__textarea::placeholder {

@@ -2,6 +2,36 @@
 const cardForm = document.querySelector("[data-js=card-add-form]");
 const mainContainer = document.querySelector("[data-js=main-container]");
 
+const textarea1 = document.querySelector("[data-js=card-add__textarea1]");
+const textarea2 = document.querySelector("[data-js=card-add__textarea2]");
+const maxCount1 = document.querySelector("[data-js=card-add__maxCount1]");
+const maxCount2 = document.querySelector("[data-js=card-add__maxCount2]");
+const counter1 = document.querySelector("[data-js=card-add__counter1]");
+
+const counter2 = document.querySelector("[data-js=card-add__counter2]");
+
+//Counter function
+
+//Grab the max length and display
+const maxLength = textarea1.maxLength;
+maxCount1.textContent = maxLength + "/";
+maxCount2.textContent = maxLength + "/";
+counter1;
+counter1.textContent = maxLength;
+counter2.textContent = maxLength;
+
+//Listen to questions textarea inputs
+//Display maxLength - character count
+textarea1.addEventListener("input", event => {
+  counter1.textContent = maxLength - event.target.value.length;
+});
+
+//Listen to answers textarea inputs
+//Display maxLength - character count
+textarea2.addEventListener("input", event => {
+  counter2.textContent = maxLength - event.target.value.length;
+});
+
 //Create the new card html
 const createCard = cardInputs => {
   const newCard = document.createElement("section");
