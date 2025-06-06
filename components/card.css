@@ -35,7 +35,7 @@
 }
 
 .card__tag {
-  width: 50px;
+  width: 60px;
   height: 25px;
   background-color: var(--tags);
   border-radius: 5px;

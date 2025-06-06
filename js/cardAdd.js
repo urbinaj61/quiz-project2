@@ -2,6 +2,7 @@
 const cardForm = document.querySelector("[data-js=card-add-form]");
 const mainContainer = document.querySelector("[data-js=main-container]");
 
+//Create the new card html
 const createCard = cardInputs => {
   const newCard = document.createElement("section");
   newCard.classList.add("card");
@@ -35,6 +36,9 @@ const createCard = cardInputs => {
         </aside>
       `;
 
+  //This code grabs the newly create html elements needed
+  //listens to the bookmark icon being clicked and toggles
+  //between on and off.
   newCard
     .querySelector("[data-js=bookmark-icon]")
     .addEventListener("click", event => {
@@ -43,7 +47,8 @@ const createCard = cardInputs => {
       svg.setAttribute("fill", currentFill === "none" ? "#006400" : "none");
     });
 
-  // Add event listener for answer toggle
+  //This code does the same as the above but for
+  //the show hide button
   const answerButton = newCard.querySelector(".card__show_answer");
   const answerElement = newCard.querySelector(".card__answer");
 
@@ -61,4 +66,5 @@ cardForm.addEventListener("submit", event => {
   const formData = new FormData(event.target);
   const cardInputs = Object.fromEntries(formData);
   createCard(cardInputs);
+  cardForm.reset();
 });
