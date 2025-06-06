@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="./assets/quiz-favicon.png" type="image/x-icon" />
+    <script src="./profile.js" defer></script>
     <link rel="stylesheet" href="styles.css" />
     <title>Quiz App</title>
   </head>
@@ -50,7 +51,12 @@
         <h2 class="settings__title">Settings</h2>
         <aside class="settings__container">
           <h2 class="settings__dark-mode-title">Dark Mode</h2>
-          <input id="switch" type="checkbox" aria-label="switch" />
+          <input
+            id="switch"
+            type="checkbox"
+            aria-label="switch"
+            data-js="settings__checkbox"
+          />
           <label class="settings__switch" for="switch">Toggle</label>
         </aside>
       </section>
