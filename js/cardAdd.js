@@ -7,7 +7,6 @@ const textarea2 = document.querySelector("[data-js=card-add__textarea2]");
 const maxCount1 = document.querySelector("[data-js=card-add__maxCount1]");
 const maxCount2 = document.querySelector("[data-js=card-add__maxCount2]");
 const counter1 = document.querySelector("[data-js=card-add__counter1]");
-
 const counter2 = document.querySelector("[data-js=card-add__counter2]");
 
 //Counter function
