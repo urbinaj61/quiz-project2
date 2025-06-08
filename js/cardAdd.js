@@ -1,7 +1,6 @@
 //Get dom elements
-const cardForm = document.querySelector("[data-js=card-add-form]");
+const cardForm = document.querySelector("[data-js=card-add__form]");
 const mainContainer = document.querySelector("[data-js=main-container]");
-
 const textarea1 = document.querySelector("[data-js=card-add__textarea1]");
 const textarea2 = document.querySelector("[data-js=card-add__textarea2]");
 const maxCount1 = document.querySelector("[data-js=card-add__maxCount1]");
@@ -47,6 +46,7 @@ textarea2.addEventListener("input", event => {
 //Create extra tags, limit of add_tags_limit
 const createExtraTags = () => {
   tags_counter++;
+
   if (tags_counter <= max_tags_limit) {
     const li = document.createElement("li");
     li.classList.add("card-add__input_li_container");
@@ -69,25 +69,29 @@ const createExtraTags = () => {
   }
 };
 
-const createTagsFromInputs = cardInputs => {
-  const tagsArray = [
-    cardInputs.input_tags,
-    cardInputs.input_tags1,
-    cardInputs.input_tags2,
-  ];
+const createTagsFromInputs = event => {
+  let tag1 = event.target[2].value;
+  let tag2 = "";
+  let tag3 = "";
+  if (event.target[3]) tag2 = event.target[3].value;
+  if (event.target[4]) tag3 = event.target[4].value;
 
+  const tagsArray = [tag1, tag2, tag3];
+
+  //Create our dynamic spans to insert into the innerHtml
   let spans = ``;
 
   for (let i = 0; i <= tagsArray.length - 1; i++) {
-    spans += `<span class="card__tag">${tagsArray[i]}</span>`;
+    if (tagsArray[i].length > 0)
+      spans += `<span class="card__tag">${tagsArray[i]}</span>`;
   }
 
   return spans;
 };
 
 //Create the new card html
-const createCard = cardInputs => {
-  const spans = createTagsFromInputs(cardInputs);
+const createCard = (cardInputs, event) => {
+  const spans = createTagsFromInputs(event);
   const newCard = document.createElement("section");
   newCard.classList.add("card");
   newCard.innerHTML = `
@@ -120,7 +124,7 @@ const createCard = cardInputs => {
         </aside>
       `;
 
-  //This code grabs the newly create html elements needed
+  //This code grabs the newly created html elements needed
   //listens to the bookmark icon being clicked and toggles
   //between on and off.
   newCard
@@ -145,12 +149,30 @@ const createCard = cardInputs => {
   mainContainer.append(newCard);
 };
 
+//This function removes the extra tags if created once submitted
+const removeExtraTagInputs = event => {
+  if (event.target.children[7].children.length > 1) {
+    for (let i = 1; i <= event.target.children[7].children.length; i++) {
+      let counter = 1;
+      event.target.children[7].children[counter].remove();
+    }
+    tags_counter = 0;
+    add_tags_button_svg.style.fill = "var(--body-bg)";
+    addTagsButtonText.textContent = `Add extra tags(max three)`;
+  }
+};
+
 //Listen to the form. Get all input fields and create a new card.
 cardForm.addEventListener("submit", event => {
   event.preventDefault();
   const formData = new FormData(event.target);
   const cardInputs = Object.fromEntries(formData);
-  createCard(cardInputs);
+  createCard(cardInputs, event);
+
+  //Remove extra tag inputs if any
+  removeExtraTagInputs(event);
+
+  textarea1.focus();
   cardForm.reset();
 });
 
