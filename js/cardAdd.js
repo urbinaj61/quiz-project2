@@ -22,6 +22,9 @@ const addTagsButtonText = document.querySelector(
 const max_tags_limit = 2;
 let tags_counter = 0;
 
+//Setup our localStorage array
+const cardDataArray = [];
+
 //Counter function
 //Grab the max length and display
 const maxLength = textarea1.maxLength;
@@ -86,12 +89,30 @@ const createTagsFromInputs = event => {
       spans += `<span class="card__tag">${tagsArray[i]}</span>`;
   }
 
-  return spans;
+  const tagsObj = { tagsArray, spans };
+
+  return tagsObj;
 };
 
 //Create the new card html
 const createCard = (cardInputs, event) => {
-  const spans = createTagsFromInputs(event);
+  const tagsObj = createTagsFromInputs(event);
+  //--------------------------------------------------------------------------
+  //  Add all collected data to localStorage as objects inside of an array.
+  //  This will be collected by the main page creating innerHtml with the stored
+  //  data.
+  //  cardDataArray.push(cardData)
+  //  localStorage.setItem("CardDataArray", CardDataArray)
+  //  On the main page we would get the stored array with::::
+  //  const storedArray = localStorage.getItem("CardDataArray")
+  //----------------------------------------------------------------------------
+  const cardDataObj = {
+    question: cardInputs.textarea_question,
+    answer: cardInputs.textarea_answer,
+    tags: tagsObj.tagsArray,
+  };
+  cardDataArray.push(JSON.stringify(cardDataObj));
+  localStorage.setItem("cardDataArray", cardDataArray);
   const newCard = document.createElement("section");
   newCard.classList.add("card");
   newCard.innerHTML = `
@@ -120,7 +141,7 @@ const createCard = (cardInputs, event) => {
         <button class="card__show_answer">Show Answer</button>
         <h3 hidden class="card__answer">${cardInputs.textarea_answer}</h3>
         <aside class="card__tag_container">
-          ${spans}
+          ${tagsObj.spans}
         </aside>
       `;
 
@@ -148,7 +169,6 @@ const createCard = (cardInputs, event) => {
 
   mainContainer.append(newCard);
 };
-
 //This function removes the extra tags if created once submitted
 const removeExtraTagInputs = event => {
   if (event.target.children[7].children.length > 1) {
