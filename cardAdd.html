@@ -31,12 +31,14 @@
           ></textarea>
           <aside class="card-add__counter_container">
             <span class="card-add__counter" data-js="card-add__counter1"></span
-            ><span class="card-add__maxCount" data-js="card-maxCount1"></span>
+            ><span
+              class="card-add__maxCount"
+              data-js="card-add__maxCount1"
+            ></span>
           </aside>
           <label class="card-add__label" for="card-add__label_answer"
             >Your answer</label
           >
-
           <textarea
             required
             placeholder="Please enter your answer"
@@ -50,7 +52,7 @@
             minlength="10"
           ></textarea>
           <aside class="card-add__counter_container">
-            <span class="card-counter" data-js="card-add__counter2"></span
+            <span class="card-add__counter" data-js="card-add__counter2"></span
             ><span
               class="card-add__maxCount"
               data-js="card-add__maxCount2"
@@ -66,7 +68,35 @@
             class="card-add__input_tags"
             type="text"
             maxlength="6"
-          /><button name="button_tags" class="card-add__button">Submit</button>
+          />
+          <aside class="add-button__tags_container">
+            <p class="add-button__text">Add extra tags</p>
+            <button
+              type="button"
+              class="add-button__tags"
+              data-js="add-button__tags"
+            >
+              <svg
+                class="icon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#006400"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-square-plus-icon lucide-square-plus"
+              >
+                <rect width="18" height="18" x="3" y="3" rx="2" />
+                <path d="M8 12h8" />
+                <path d="M12 8v8" />
+              </svg>
+            </button>
+          </aside>
+
+          <button name="button_tags" class="card-add__button">Submit</button>
         </form>
       </section>
     </main>

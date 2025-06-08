@@ -23,6 +23,7 @@
 body {
   background-color: var(--body-bg);
   overflow-x: hidden;
+  transition: all 1s ease-in-out;
 }
 
 .body-dark_mode {
@@ -30,6 +31,7 @@ body {
   --header-footer-bg: var(--head-foot-bg-dm);
   --profile-text: var(--light-text);
   --profile-switch: var(--body-bg);
+  transition: all 1s ease-in-out;
 }
 
 main {
