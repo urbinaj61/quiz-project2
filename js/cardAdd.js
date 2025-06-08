@@ -18,12 +18,23 @@ const addTagsButtonText = document.querySelector(
   "[data-js=add-tag-button__text]"
 );
 
+//Tags array
+let tagsArray = [];
+
 //Limit add-tags functionality
 const max_tags_limit = 2;
 let tags_counter = 0;
 
 //Setup our localStorage array
 const cardDataArray = [];
+
+const grabLocalStorage = () => {
+  const storedData = JSON.parse(localStorage.getItem("cardDataArray"));
+
+  if (storedData) cardDataArray.push(...storedData);
+};
+
+grabLocalStorage();
 
 //Counter function
 //Grab the max length and display
@@ -73,13 +84,21 @@ const createExtraTags = () => {
 };
 
 const createTagsFromInputs = event => {
+  tagsArray = [];
   let tag1 = event.target[2].value;
+  tagsArray.push(tag1);
   let tag2 = "";
   let tag3 = "";
-  if (event.target[3]) tag2 = event.target[3].value;
-  if (event.target[4]) tag3 = event.target[4].value;
 
-  const tagsArray = [tag1, tag2, tag3];
+  if (event.target[3].value) {
+    tag2 = event.target[3].value;
+    tagsArray.push(tag2);
+  }
+
+  if (event.target[4].value) {
+    tag3 = event.target[4].value;
+    tagsArray.push(tag3);
+  }
 
   //Create our dynamic spans to insert into the innerHtml
   let spans = ``;
@@ -94,25 +113,39 @@ const createTagsFromInputs = event => {
   return tagsObj;
 };
 
+//Function to handle retrieval and new additions to localStorage
+const handleLocalStorageFunctionality = (cardInputs, tagsObj) => {
+  const cardDataObj = {
+    tags: tagsObj.tagsArray,
+    question: cardInputs.textarea_question,
+    answer: cardInputs.textarea_answer,
+  };
+  cardDataArray.push(cardDataObj);
+  localStorage.setItem("cardDataArray", JSON.stringify(cardDataArray));
+};
+
 //Create the new card html
 const createCard = (cardInputs, event) => {
   const tagsObj = createTagsFromInputs(event);
+
   //--------------------------------------------------------------------------
   //  Add all collected data to localStorage as objects inside of an array.
   //  This will be collected by the main page creating innerHtml with the stored
   //  data.
+  //  First we have to retrieve any already stored data.
+  //  The retrieved objects have to be parsed so we can play with them. json.parse()
+  //  All objects pushed into our array have to be stringified so we can store them. json.stringify()
+  //  We push all retrieved objects into our array.
+  //  Once the new care object is created and stringified we can push into our array.
   //  cardDataArray.push(cardData)
   //  localStorage.setItem("CardDataArray", CardDataArray)
   //  On the main page we would get the stored array with::::
   //  const storedArray = localStorage.getItem("CardDataArray")
   //----------------------------------------------------------------------------
-  const cardDataObj = {
-    question: cardInputs.textarea_question,
-    answer: cardInputs.textarea_answer,
-    tags: tagsObj.tagsArray,
-  };
-  cardDataArray.push(JSON.stringify(cardDataObj));
-  localStorage.setItem("cardDataArray", cardDataArray);
+
+  //Function to handle retrieval and new additions to localStorage
+  handleLocalStorageFunctionality(cardInputs, tagsObj);
+
   const newCard = document.createElement("section");
   newCard.classList.add("card");
   newCard.innerHTML = `
