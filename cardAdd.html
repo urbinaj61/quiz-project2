@@ -59,18 +59,28 @@
             ></span>
           </aside>
           <label class="card-add__label" for="card-add__tags">Tags</label>
-          <input
-            required
-            placeholder="Please enter a tag"
-            aria-label="input_tags"
-            name="input_tags"
-            id="card-add__tags"
-            class="card-add__input_tags"
-            type="text"
-            maxlength="6"
-          />
+          <ul
+            class="card-add__input_ul_container"
+            data-js="card-add__input_ul_container"
+          >
+            <li class="card-add__input_li_container">
+              <input
+                required
+                placeholder="Please enter a tag"
+                aria-label="input_tags"
+                name="input_tags"
+                id="card-add__tags"
+                class="card-add__input_tags"
+                type="text"
+                maxlength="6"
+              />
+            </li>
+          </ul>
+
           <aside class="add-button__tags_container">
-            <p class="add-button__text">Add extra tags</p>
+            <p class="add-button__text" data-js="add-tag-button__text">
+              Add extra tags(max three)
+            </p>
             <button
               type="button"
               class="add-button__tags"
@@ -78,6 +88,7 @@
             >
               <svg
                 class="icon"
+                data-js="add-button__tags_svg"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"

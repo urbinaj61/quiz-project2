@@ -8,11 +8,22 @@ const maxCount1 = document.querySelector("[data-js=card-add__maxCount1]");
 const maxCount2 = document.querySelector("[data-js=card-add__maxCount2]");
 const counter1 = document.querySelector("[data-js=card-add__counter1]");
 const counter2 = document.querySelector("[data-js=card-add__counter2]");
-
+const add_tags_button_svg = document.querySelector(
+  "[data-js=add-button__tags_svg]"
+);
+const addTagsButtonsContainer = document.querySelector(
+  "[data-js=card-add__input_ul_container]"
+);
 const addTagsButton = document.querySelector("[data-js=add-button__tags]");
+const addTagsButtonText = document.querySelector(
+  "[data-js=add-tag-button__text]"
+);
+
+//Limit add-tags functionality
+const max_tags_limit = 2;
+let tags_counter = 0;
 
 //Counter function
-
 //Grab the max length and display
 const maxLength = textarea1.maxLength;
 maxCount1.textContent = maxLength;
@@ -33,22 +44,50 @@ textarea2.addEventListener("input", event => {
   counter2.textContent = maxLength - event.target.value.length + "/";
 });
 
+//Create extra tags, limit of add_tags_limit
 const createExtraTags = () => {
-  const input = document.createElement("input");
-  input.classList.add("card-add__input_tags");
-  input.setAttribute("required", "true");
-  input.setAttribute("placeholder", "Please enter a tag");
-  input.setAttribute("aria-label", "input_tags");
-  input.setAttribute("name", "input_tags");
-  input.setAttribute("id", "card-add__tags");
-  input.setAttribute("data-js", "card-add__input_tags");
-  input.setAttribute("type", "text");
-  input.setAttribute("maxlength", "6");
-  cardForm.append(input);
+  tags_counter++;
+  if (tags_counter <= max_tags_limit) {
+    const li = document.createElement("li");
+    li.classList.add("card-add__input_li_container");
+    const input = document.createElement("input");
+    input.classList.add("card-add__input_tags");
+    input.setAttribute("required", "true");
+    input.setAttribute("placeholder", "Please enter a tag");
+    input.setAttribute("aria-label", "input_tags");
+    input.setAttribute("name", `input_tags${tags_counter}`);
+    input.setAttribute("id", "card-add__tags");
+    input.setAttribute("data-js", "card-add__input_tags");
+    input.setAttribute("type", "text");
+    input.setAttribute("maxlength", "6");
+    li.append(input);
+    addTagsButtonsContainer.append(li);
+    input.focus();
+  } else {
+    add_tags_button_svg.style.fill = "var(--add-tags-button-limit-reached)";
+    addTagsButtonText.textContent = `Don't be greedy now. Limit Reached`;
+  }
+};
+
+const createTagsFromInputs = cardInputs => {
+  const tagsArray = [
+    cardInputs.input_tags,
+    cardInputs.input_tags1,
+    cardInputs.input_tags2,
+  ];
+
+  let spans = ``;
+
+  for (let i = 0; i <= tagsArray.length - 1; i++) {
+    spans += `<span class="card__tag">${tagsArray[i]}</span>`;
+  }
+
+  return spans;
 };
 
 //Create the new card html
 const createCard = cardInputs => {
+  const spans = createTagsFromInputs(cardInputs);
   const newCard = document.createElement("section");
   newCard.classList.add("card");
   newCard.innerHTML = `
@@ -77,7 +116,7 @@ const createCard = cardInputs => {
         <button class="card__show_answer">Show Answer</button>
         <h3 hidden class="card__answer">${cardInputs.textarea_answer}</h3>
         <aside class="card__tag_container">
-          <span class="card__tag">${cardInputs.input_tags}</span>
+          ${spans}
         </aside>
       `;
 
