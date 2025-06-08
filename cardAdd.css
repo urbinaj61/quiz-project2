@@ -78,6 +78,32 @@
   color: var(--light-text);
 }
 
+.add-button__tags_container {
+  margin: 0 0 0 218px;
+  display: flex;
+  justify-content: right;
+  width: 150px;
+  height: 30px;
+}
+
+.add-button__text {
+  color: var(--header-footer-bg);
+  margin: 2px 10px 0 0;
+}
+
+.add-button__tags {
+  width: 30px;
+  height: 30px;
+  outline: none;
+  border: none;
+  background-color: var(--body-bg);
+  cursor: pointer;
+}
+
+.icon:hover {
+  fill: var(--tags);
+}
+
 .card-add__button {
   margin-top: 20px;
   width: 200px;

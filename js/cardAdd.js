@@ -9,27 +9,43 @@ const maxCount2 = document.querySelector("[data-js=card-add__maxCount2]");
 const counter1 = document.querySelector("[data-js=card-add__counter1]");
 const counter2 = document.querySelector("[data-js=card-add__counter2]");
 
+const addTagsButton = document.querySelector("[data-js=add-button__tags]");
+
 //Counter function
 
 //Grab the max length and display
 const maxLength = textarea1.maxLength;
-maxCount1.textContent = maxLength + "/";
-maxCount2.textContent = maxLength + "/";
-counter1;
-counter1.textContent = maxLength;
-counter2.textContent = maxLength;
+maxCount1.textContent = maxLength;
+maxCount2.textContent = maxLength;
+
+counter1.textContent = maxLength + "/";
+counter2.textContent = maxLength + "/";
 
 //Listen to questions textarea inputs
 //Display maxLength - character count
 textarea1.addEventListener("input", event => {
-  counter1.textContent = maxLength - event.target.value.length;
+  counter1.textContent = maxLength - event.target.value.length + "/";
 });
 
-//Listen to answers textarea inputs
+//Listen to answers textarea inputs`
 //Display maxLength - character count
 textarea2.addEventListener("input", event => {
-  counter2.textContent = maxLength - event.target.value.length;
+  counter2.textContent = maxLength - event.target.value.length + "/";
 });
+
+const createExtraTags = () => {
+  const input = document.createElement("input");
+  input.classList.add("card-add__input_tags");
+  input.setAttribute("required", "true");
+  input.setAttribute("placeholder", "Please enter a tag");
+  input.setAttribute("aria-label", "input_tags");
+  input.setAttribute("name", "input_tags");
+  input.setAttribute("id", "card-add__tags");
+  input.setAttribute("data-js", "card-add__input_tags");
+  input.setAttribute("type", "text");
+  input.setAttribute("maxlength", "6");
+  cardForm.append(input);
+};
 
 //Create the new card html
 const createCard = cardInputs => {
@@ -90,10 +106,17 @@ const createCard = cardInputs => {
   mainContainer.append(newCard);
 };
 
+//Listen to the form. Get all input fields and create a new card.
 cardForm.addEventListener("submit", event => {
   event.preventDefault();
   const formData = new FormData(event.target);
   const cardInputs = Object.fromEntries(formData);
   createCard(cardInputs);
   cardForm.reset();
+});
+
+//Listen to the add extra tags button and create new input field
+addTagsButton.addEventListener("click", event => {
+  event.preventDefault();
+  createExtraTags();
 });
