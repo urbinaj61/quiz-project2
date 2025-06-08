@@ -18,6 +18,7 @@
   --tags: #efef66;
   --button-bg: #92ec92;
   --button-shadow: #676865;
+  --add-tags-button-limit-reached: tomato;
 }
 
 body {
