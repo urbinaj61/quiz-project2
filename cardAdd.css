@@ -130,3 +130,37 @@
   color: var(--header-footer-bg);
   box-shadow: 4px 4.5px 2px 2px var(--button-shadow);
 }
+
+.new-card__container {
+  margin-top: 20px;
+  width: 500px;
+  max-width: 80%;
+  background: linear-gradient(
+    90deg,
+    rgba(146, 238, 146, 1) 0%,
+    rgba(239, 239, 102, 1) 77%,
+    rgba(222, 237, 189, 1) 100%
+  );
+}
+
+.new-card__heading_container {
+  display: flex;
+  justify-content: left;
+  margin: 5px;
+  color: var(--header-footer-bg);
+}
+
+.new-card__heading {
+  color: var(--header-footer-bg);
+  text-decoration: underline;
+}
+
+.new-card__span_container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.new-card__image_container {
+  margin: 10px 5px;
+  display: flex;
+}
