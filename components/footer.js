@@ -1,69 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="./assets/quiz-favicon.png" type="image/x-icon" />
-    <script src="./profile.js" type="module"></script>
-    <link rel="stylesheet" href="styles.css" />
-    <title>Quiz App</title>
-  </head>
-  <body>
-    <main>
-      <section class="profile">
-        <aside class="profile__image_container">
-          <img src="./assets/alien.png" alt="alien image" />
-        </aside>
-        <aside class="profile__name_container">
-          <h2 class="profile__name">Joseph Urbina</h2>
-        </aside>
-      </section>
-
-      <section class="about-me">
-        <h2 class="about-me__title">About me</h2>
-        <p class="about-me__summary">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere magni
-          similique culpa. Sint quasi placeat fuga pariatur illo dolores sed,
-          fugiat harum reprehenderit iusto esse reiciendis necessitatibus
-          maiores? Molestias voluptas architecto, voluptatibus nostrum modi
-          blanditiis repellendus, qui adipisci temporibus quod nesciunt cumque
-          esse eius incidunt dolorum alias aut explicabo minus.
-        </p>
-      </section>
-      <section class="tags">
-        <aside class="tags__counter_container">
-          <img
-            class="tags__icon"
-            src="./assets/file-question.svg"
-            alt="Questions-image"
-          />
-          <p class="tags__count">12</p>
-        </aside>
-        <aside class="tags__counter_container">
-          <img class="tags__icon" src="./assets/bookmark.svg" alt="bookmark" />
-          <p class="tags__count">4</p>
-        </aside>
-      </section>
-
-      <section class="settings">
-        <h2 class="settings__title">Settings</h2>
-        <aside class="settings__container">
-          <h2 class="settings__dark-mode-title">Dark Mode</h2>
-          <input
-            id="switch"
-            type="checkbox"
-            aria-label="switch"
-            data-js="settings__checkbox"
-          />
-          <label class="settings__switch" for="switch">Toggle</label>
-        </aside>
-      </section>
-    </main>
-
-    <nav>
+export const footerCreate = () => {
+  const body = +document.querySelector("body");
+  body.innerHTML = `<nav>
       <ul>
         <li>
-          <a href="./index.html"
+          <a class="current" href="./index.html"
             ><svg
               class="icon"
               xmlns="http://www.w3.org/2000/svg"
@@ -104,7 +44,7 @@
           ></a>
         </li>
         <li>
-          <a class="current" href="./profile.html"
+          <a href="./profile.html"
             ><svg
               class="icon"
               xmlns="http://www.w3.org/2000/svg"
@@ -143,6 +83,5 @@
           ></a>
         </li>
       </ul>
-    </nav>
-  </body>
-</html>
+    </nav>`;
+};
