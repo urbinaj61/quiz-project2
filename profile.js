@@ -1,3 +1,6 @@
+import { headerCreate } from "./components/header.js";
+headerCreate();
+
 //Dark mode logic
 const body = document.querySelector("body");
 const checkBoxSwitch = document.querySelector("[data-js=settings__checkbox]");

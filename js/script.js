@@ -1,3 +1,6 @@
+import { headerCreate } from "../components/header.js";
+headerCreate();
+
 const mainContainer = document.querySelector("[data-js=main-container]");
 
 //Setup our localStorage array and grab it from the browser
@@ -122,6 +125,7 @@ document.querySelectorAll("[data-js=bookmark-icon]").forEach(iconButton => {
   iconButton.addEventListener("click", event => {
     if (event.target.closest("svg").getAttribute("fill") === "none") {
       event.target.closest("svg").setAttribute("fill", "#006400");
+      console.log(event);
     } else {
       event.target.closest("svg").setAttribute("fill", "none");
     }

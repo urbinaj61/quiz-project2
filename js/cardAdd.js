@@ -1,3 +1,6 @@
+import { headerCreate } from "../components/header.js";
+headerCreate();
+
 //Get dom elements
 const mainContainer = document.querySelector("[data-js=main-container]");
 const cardForm = document.querySelector("[data-js=card-add__form]");
@@ -24,6 +27,7 @@ let tagsArray = [];
 //Limit add-tags functionality
 const max_tags_limit = 2;
 let tags_counter = 0;
+let id_counter = 0;
 
 //Create the newly created cards section
 const newCardSection = document.createElement("section");
@@ -150,14 +154,18 @@ const cardDataArray = [];
 const grabLocalStorage = () => {
   const storedData = JSON.parse(localStorage.getItem("cardDataArray"));
 
-  if (storedData) cardDataArray.push(...storedData);
+  if (storedData) {
+    cardDataArray.push(...storedData);
+    id_counter = storedData.length;
+  }
 };
 
 grabLocalStorage();
 
 //Function to handle retrieval and new additions to localStorage
-const handleLocalStorageFunctionality = (cardInputs, tagsObj) => {
+const handleLocalStorageFunctionality = (cardInputs, tagsObj, id_counter) => {
   const cardDataObj = {
+    id: id_counter++,
     tags: tagsObj.tagsArray,
     question: cardInputs.textarea_question,
     answer: cardInputs.textarea_answer,
